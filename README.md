@@ -18,7 +18,8 @@ sh download_data.sh
 ```
 # Start training with: 
 
-# ChairSegment
+# ChairSegment -  parameters
+
 python main.py --lr=1e-3 --arch=unet --optimizer=Adam --epochs=20
 python main.py --lr=1e-4 --arch=fcnvgg16 --optimizer=SGD --epochs=50
 python main.py --lr=1e-4 --arch=fcnresnet50 --optimizer=SGD --epochs=100 --momentum=0.9 --weight_decay=1e-5
