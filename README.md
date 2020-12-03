@@ -35,7 +35,7 @@ python main.py --lr=1e-6 --arch=fcnresnet101 --optimizer=RMSprop --epochs=100 --
 | FCN-ResNet-101       | 92.19%      | 61.62%      | 73.96%      |
 
 
-[Chair Segments](https://arxiv.org/abs/2012.01250)
+Report: [https://arxiv.org/abs/2012.01250](https://arxiv.org/abs/2012.01250)
 
 ```
 @article{yang-etal-2020-using,
