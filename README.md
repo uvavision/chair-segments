@@ -38,7 +38,7 @@ python main.py --lr=1e-6 --arch=fcnresnet101 --optimizer=RMSprop --epochs=100 --
 Report: [https://arxiv.org/abs/2012.01250](https://arxiv.org/abs/2012.01250)
 
 ```
-@article{yang-etal-2020-using,
+@article{pinto-alva-etal-2020-using,
   title = {Chair Segments: A Compact Benchmark for the Study of Object Segmentation},
   author = {Leticia Pinto-Alva, Ian K. Torres, Rosangel Garcia, Ziyan Yang, Vicente Ordonez},
   year = {2020}
