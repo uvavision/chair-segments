@@ -7,3 +7,28 @@ Over the years, datasets and benchmarks have had an outsized influence on the de
 ### Requirements
 - Python 3
 - Pytorch > 1.0
+- torchVision
+
+### Download ChairSegment dataset
+```
+sh download_data.sh
+```
+
+### Training
+```
+# Start training with: 
+
+# ChairSegment
+python main.py --lr=1e-3 --arch=unet --optimizer=Adam --epochs=20
+python main.py --lr=1e-4 --arch=fcnvgg16 --optimizer=SGD --epochs=50
+python main.py --lr=1e-4 --arch=fcnresnet50 --optimizer=SGD --epochs=100 --momentum=0.9 --weight_decay=1e-5
+python main.py --lr=1e-6 --arch=fcnresnet101 --optimizer=RMSprop --epochs=100 --momentum=0.9 --weight_decay=1e-7
+```
+
+### Chair Segments
+| Model             | Prec.       |IoU.        |Dice        |
+| ----------------- | ----------- |----------- |----------- |
+| [Unet]                 | 97.18%      | 85.08%      | 91.25%      |
+| [FCN-VGG-16]           | 91.73%      | 61.09%      | 74.09%      |
+| [FCN-ResNet-50 ]       | 92.04%      | 60.19%      | 72.58%      |
+| [FCN-ResNet-101]       | 92.19%      | 61.62%      | 73.96%      |
