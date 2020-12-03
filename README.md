@@ -33,3 +33,14 @@ python main.py --lr=1e-6 --arch=fcnresnet101 --optimizer=RMSprop --epochs=100 --
 | FCN-VGG-16           | 91.73%      | 61.09%      | 74.09%      |
 | FCN-ResNet-50        | 92.04%      | 60.19%      | 72.58%      |
 | FCN-ResNet-101       | 92.19%      | 61.62%      | 73.96%      |
+
+
+[Chair Segments](https://arxiv.org/abs/2012.01250)
+
+@article{yang-etal-2020-using,
+  title = {Chair Segments: A Compact Benchmark for the Study of Object Segmentation},
+  author = {Leticia Pinto-Alva, Ian K. Torres, Rosangel Garcia, Ziyan Yang, Vicente Ordonez},
+  year = {2020}
+  address = {Online}
+  url = {https://arxiv.org/abs/2012.01250}
+}
