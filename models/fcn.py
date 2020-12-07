@@ -4,6 +4,7 @@ from ._utils import _SimpleSegmentationModel
 
 __all__ = ["FCN"]
 
+### cropped version from https://github.com/pochih/FCN-pytorch/blob/master/python/fcn.py
 
 class FCN(_SimpleSegmentationModel):
     """

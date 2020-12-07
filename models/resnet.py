@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 from .utilsresnet import load_state_dict_from_url
 
+#### cropped version from https://pytorch.org/hub/pytorch_vision_fcn_resnet101/
 
 __all__ = ['ResNet', 'resnet50', 'resnet101']
 

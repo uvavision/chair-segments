@@ -7,7 +7,7 @@ from . import resnet
 from .fcn import FCN, FCNHead
 
 
-#### More information here : https://pytorch.org/hub/pytorch_vision_fcn_resnet101/
+#### cropped version from https://pytorch.org/hub/pytorch_vision_fcn_resnet101/
 
 
 __all__ = ['fcn_resnet50', 'fcn_resnet101']

@@ -5,6 +5,7 @@ from torch import nn
 from torch.nn import functional as F
 from torch.jit.annotations import Dict
 
+#### cropped version from https://pytorch.org/hub/pytorch_vision_fcn_resnet101/
 
 class _SimpleSegmentationModel(nn.Module):
     __constants__ = ['aux_classifier']

@@ -4,6 +4,8 @@ import torch.optim as optim
 from torchvision import models
 from torchvision.models.vgg import VGG
 
+### cropped version from https://github.com/pochih/FCN-pytorch/blob/master/python/fcn.py
+
 class VGGNet(VGG):
     def __init__(self, pretrained=True, model='vgg16', requires_grad=True, remove_fc=True, show_params=False):
         super().__init__(make_layers(cfg[model]))
