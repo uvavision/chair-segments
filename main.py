@@ -50,23 +50,26 @@ parser.add_argument('--size', '-s',  default=10,
                     help='images per line, 10 by default')
 parser.add_argument('--epochs', '-e',  default=1, type=int,
                     help='epochs , 10 by default')
-
+parser.add_argument('--resol', '-re', default=64, type=int,
+                    help='Resolution of the Chair image (default:64)')
 
 args = parser.parse_args()
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 start_epoch = 0  # start from epoch 0 or last checkpoint epoch
+resolution  = '0'+ str(args.resol) if (int(args.resol) < 100) else str(args.resol)
+
 # Transform
 rsizet      =  transforms.Compose([
-                    transforms.Resize([64,64]),
+                    transforms.Resize([int(resolution), int(resolution)]),
                     transforms.ToTensor()
                 ])
 
 # Data
 dspath      = args.data + '/' + args.dataset 
 
-trainset    = datasets.CHAIRS2020(dspath + '064/', split = 'train', transform = rsizet)
-valset      = datasets.CHAIRS2020(dspath + '064/', split = 'val',   transform = rsizet)
+trainset    = datasets.CHAIRS2020(dspath + resolution + '/', split = 'train', transform = rsizet)
+valset      = datasets.CHAIRS2020(dspath + resolution + '/', split = 'val',   transform = rsizet)
 
 
 trainLoader = torch.utils.data.DataLoader(dataset = trainset,
@@ -78,7 +81,7 @@ valLoader   = torch.utils.data.DataLoader(dataset = valset,
                                             shuffle = False) # No need.
 
 print('==> Generating Images and Ground Truth..')
-visualizeImages(args.dataset, 'results/' + args.dataset, args.size, args.lines, valset, rsizet)
+visualizeImages(args.dataset, 'results/' + args.dataset + resolution, args.size, args.lines, valset, rsizet)
 
 # Model
 print('==> Building ' + args.arch +' model..')
@@ -102,7 +105,7 @@ if args.resume:
     # Load checkpoint.
     print('==> Resuming from checkpoint..')
     assert os.path.isdir('logs'), 'Error: no checkpoint directory found!'
-    modelname = args.dataset + '064_' + args.arch + '_' + type_train + '.pth'
+    modelname = args.dataset + resolution + '_' + args.arch + '_' + type_train + '.pth'
     checkpoint = torch.load(os.path.join('logs', modelname))
     model.load_state_dict(checkpoint['state_dict'])
     
@@ -130,7 +133,7 @@ max_iou, max_dice, max_prec = 0, 0, 0
 
 epochs      = args.epochs
 best_acc    = 0  # best test accuracy
-dataname    = args.dataset + '064_' + args.arch + '_' + type_train
+dataname    = args.dataset + resolution + '_' + args.arch + '_' + type_train
 print(dataname)
 tt          = 0
 st          = time.time()
@@ -185,7 +188,7 @@ for epoch in range(start_epoch, epochs + 1):  # Number of epochs.
         if not os.path.isdir('logs'):
             os.mkdir('logs')
         torch.save(state, os.path.join('logs', dataname ) + ".pth")
-        visualizeResults(args.dataset, model, args.arch , args.size, args.lines, valset)
+        visualizeResults(args.dataset, model, args.arch, resolution, args.size, args.lines, valset)
 
 ###### Saving time and numbers in respective file:
 save_files(dataname, tt, best_epoch, max_iou, max_dice, max_prec, val_losses, val_iou, val_dice, val_prec)

@@ -82,7 +82,7 @@ def visualizeImages(dataset, dataname, size, lines, valset, trans):
 
 
 
-def visualizeResults(dataset, model, dataname, size, lines, valset):
+def visualizeResults(dataset, model, dataname, resolution, size, lines, valset):
 
     model.cuda()
     lst_val  =  [ x.rstrip() for x in open('ids/idlst_val.txt', "r")]
@@ -112,4 +112,4 @@ def visualizeResults(dataset, model, dataname, size, lines, valset):
             lstval_pred.append(torch.cat((preimage, preimage, preimage), 0))
             
         ##### validation set
-        show_grid(lstval_pred,  size,'results/'+ dataset + '064_' +  dataname + '_scratch_valpred_'    + str(i))
+        show_grid(lstval_pred,  size,'results/'+ dataset + resolution + '_' +  dataname + '_scratch_valpred_'    + str(i))
